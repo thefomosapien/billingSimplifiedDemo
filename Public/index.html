@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+
+<head>
+
+    <title>Billing Simplified</title>
+
+
+    <!--CSS-->
+    <link rel="stylesheet" href="assets/styles/style.css">
+
+    <!--Toaster-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <ui-view></ui-view>
+
+    <!--Angular-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <!-- jQuery -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- D3 -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+    <script src="./JS/app.js"></script>
+
+    <!--Controllers-->
+    <script src="JS/controllers/billingAdminCtrl.js"></script>
+    <script src="JS/controllers/billingStaffCtrl.js"></script>
+    <script src="JS/controllers/loginCtrl.js"></script>
+    <script src="JS/controllers/practiceAdminCtrl.js"></script>
+    <script src="JS/controllers/practiceStaffCtrl.js"></script>
+    <script src="JS/directives/searchBill/searchBillCtrl.js"></script>
+    <script src="JS/directives/searchPatient/searchPatientCtrl.js"></script>
+    <script src="JS/directives/modals/newPatientModalCtrl.js"></script>
+    <script src="JS/directives/modals/newBillModalCtrl.js"></script>
+    <script src="JS/directives/modals/billModalCtrl.js"></script>
+    <script src="JS/controllers/patientProfileCtrl.js"></script>
+    <script src="JS/directives/csvImport/csvImportCtrl.js"></script>
+
+    <!--Services-->
+    <script src="JS/services/billingAdminSvc.js"></script>
+    <script src="JS/services/billingStaffSvc.js"></script>
+    <script src="JS/services/chartSvc.js"></script>
+    <script src="JS/services/loginSvc.js"></script>
+    <script src="JS/services/practiceAdminSvc.js"></script>
+    <script src="JS/services/practiceStaffSvc.js"></script>
+    <script src="JS/services/patientProfileSvc.js"></script>
+    <script src="JS/services/billSvc.js"></script>
+    <script src="JS/directives/searchBill/searchBillSvc.js"></script>
+    <script src="JS/directives/searchPatient/searchPatientSvc.js"></script>
+
+    <!-- TOASTER -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
+
+    <!--Directives-->
+    <script src="JS/directives/modals/newPatientModalDir.js"></script>
+    <script src="JS/directives/modals/newBillModalDir.js"></script>
+    <script src="JS/directives/modals/billModalDir.js"></script>
+    <script src="JS/directives/searchBill/searchBillDir.js"></script>
+    <script src="JS/directives/searchPatient/searchPatientDir.js"></script>
+    <script src="JS/directives/csvImport/csvImportDir.js"></script>
+
+    <!--Chart Directives-->
+    <script src="JS/directives/charts/totalArChartDir.js"></script>
+    <script src="JS/directives/charts/arGoalChartDir.js"></script>
+    <script src="JS/directives/charts/patientsChartDir.js"></script>
+    <script src="JS/directives/charts/amtBilledChartDir.js"></script>
+
+    <!-- TOASTER -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
+
+    <!-- CSV IMPORT **this file copied and pasted to public folder**-->
+    <script src="./angular-csv-import.js"></script>
+
+</body>
+
+</html>

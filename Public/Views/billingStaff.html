@@ -1,0 +1,61 @@
+<div>
+    BILLING STAFF VIEW
+</div>
+
+<csv-import-dir></csv-import-dir>
+
+<div class="">
+    <span class="" ng-hide="hidden">
+    {{chosenClinic.email}}<br>
+        <ul ng-repeat= "patient in chosenClinic.patients">
+        <li ng-click="showPatientBills(patient)">{{patient.firstName}}{{patient.lastName}}</li>
+        </ul>
+    <input type="text" ng-model="patientBill._id"><br>
+    <input type="text" ng-model="updatePat.firstName" placeholder="first name"><br>
+    <input type="text" ng-model="updatePat.lastName" placeholder="last name"><br>
+    <input type="text" ng-model="updatePat.insurance" placeholder="insurance"><br><br>
+    <input type="text" ng-model="updatePat.email" placeholder="email"><br>
+    <input type="text" ng-model="updatePat.dateofBirth" placeholder="dateofBirth"><br>
+    <button ng-click="updatePatient(updatePat, patientBill._id)">Update Patient Information</button>
+
+    <span ng-show="hidebills">
+
+        <ul ng-repeat= "bill in patientBill.bills">
+          <li ><h1>Bill</h1>bill Amount: {{bill.billAmount}}<br></li>
+              <ul ng-repeat="payment in bill.payments">
+                <li>Total Paid: {{payment.totalPaid}} Remaining Balance: {{payment.remainingBal}}</li>
+              </ul>
+              <button ng-click="showAddPayment(bill)">add payment</button>
+          </ul>
+          <span>
+              <form>
+
+                  <input type="text" ng-model="bill.billAmount" placeholder="Bill Amount"><br>
+                  <input type="text" ng-model="patientBill._id"><br>
+                  <input type="text" ng-model="bill.billingAddress" placeholder="Billing Address"><br>
+                  <button ng-click="submitBill(bill, patientBill._id)"> Submit Bill</button>
+              </form>
+          </span>
+          <div ng-hide="addPayment" class="">
+              <label> Payments </label>
+              <input type="text" ng-model="billId._id" placeholder="EnterTextHere"><br>
+              <input type="text" ng-model="payment.remainingBal" placeholder="remaining balance"><br>
+              <input type="text" ng-model="payment.totalPaid" placeholder="total paid"><br>
+              <input type="text" ng-model="payment.purpose" placeholder="Purpose of Payment"><br>
+              <input type="text" ng-model="payment.paymentMethod" placeholder="Payment Method"><br>
+              <textarea type="text" ng-model="payment.comments" placeholder="comments"></textarea><br>
+              <button ng-click="makePayment(payment, billId._id)">make the payment</button>
+          </div>
+        <!-- </ul> -->
+    </span>
+
+    </span>
+    <ul ng-click="unhidden(practice)" ng-repeat="practice in practices">
+        <li>Practice Name: {{practice.name}}</li>
+    </ul>
+</div>
+
+<search-bill-dir></search-bill-dir>
+<!--<search-patient-dir></search-patient-dir>-->
+
+<!-- <toaster-container></toaster-container> -->

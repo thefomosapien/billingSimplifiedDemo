@@ -1,0 +1,176 @@
+BILLING ADMIN
+<hr>
+<!--ADD BILLING ADMIN STAFF MEMBER -->
+<button ng-click="showAddNewStaff()">Add new Staff member to Billing simplified</button>
+<div ng-hide="addNewStaff">
+    <label>Create New Staff Member for Billing Simplified</label>
+    <form action="index.html" method="post">
+        <input ng-model="newUser.firstName" placeholder="First Name">
+        <br>
+        <input ng-model="newUser.lastName" placeholder="Last Name">
+        <br>
+        <input ng-model="newUser.email" placeholder="Email">
+        <br>
+        <input ng-model="newUser.password" placeholder="password">
+        <br>
+        <select ng-model="newUser.userType">
+            <option value="billingAdmin">Billing Simplified Admin</option>
+            <option value="billingStaff">Billing Simplified Staff</option>
+        </select>
+    </form>
+    <button ng-click="createNewUser(newUser)">Submit New User</button>
+</div>
+
+<br>
+<br>
+<hr>
+<!--ADD PRACTICE -->
+<label>Create Practice </label>
+<div  class="create-practice">
+    <form name="lessonForm" action="index.html" method="post">
+        <input ng-model="newPractice.name" placeholder="Practice Name">
+        <br>
+        <div ng-class="{ 'has-error' : lessonForm.email.$invalid && !lessonForm.email.$pristine}">
+            <br>
+            <input placeholder="email" class="form-control" name="email" type="email" ng-model="newPractice.email" required>
+            <br>
+            <span ng-show="lessonForm.email.$invalid && !lessonForm.email.$pristine" class="formVal">Enter a valid email</span>
+            <br>
+        </div>
+        <input ng-model="newPractice.phoneNumber" placeholder="Practice Phone Number">
+        <br>
+        <input ng-model="newPractice.mailingAddress" placeholder="Practice Address">
+    </form>
+    <button ng-click="createNewPractice(newPractice)">TEST</button>
+</div>
+<br>
+<br>
+<hr>
+
+<!--ADD CLINIC -->
+<div ng-hide="clinicAdded" class="create-user">
+    <label>Create User for {{practiceName}}</label>
+    <form action="index.html" method="post">
+        <input type="text" ng-model="practiceId" placeholder="EnterTextHere">
+        <input ng-model="newUser.firstName" placeholder="First Name">
+        <br>
+        <input ng-model="newUser.lastName" placeholder="Last Name">
+        <br>
+        <input ng-model="newUser.email" placeholder="Email">
+        <br>
+        <input ng-model="newUser.password" placeholder="password">
+        <br>
+        <select ng-model="newUser.userType">
+            <option value="practiceAdmin">Practice Admin</option>
+            <option value="practiceStaff">Practice Staff</option>
+        </select>
+    </form>
+    <button ng-click="createNewUser(newUser, practiceId)">Submit New User</button>
+</div>
+
+<div class="">
+    <span class="" ng-hide="hidden">
+        <label>Create New User for  {{chosenClinic.name}}</label>
+        <form action="index.html" method="post">
+            <input type="text" ng-model="praxId" value="chosenClinic._id" placeholder="EnterTextHere">
+            <input ng-model="newUser.firstName" placeholder="First Name">
+            <br>
+            <input ng-model="newUser.lastName" placeholder="Last Name">
+            <br>
+            <input ng-model="newUser.email" placeholder="Email">
+            <br>
+            <input ng-model="newUser.password" placeholder="password">
+            <br>
+            <select ng-model="newUser.userType">
+                <option value="practiceAdmin">Practice Admin</option>
+                <option value="practiceStaff">Practice Staff</option>
+                <option value="billingAdmin">Billing Admin</option>
+                <option value="billingStaff">Billing Staff</option>
+            </select>
+        </form>
+        <button ng-click="createNewUser(newUser, praxId)">Submit New User</button>
+        <br><br><br>
+		{{chosenClinic.email}}
+		<br>
+		<!-- <input ng-model="practiceId" placeholder="EnterTextHere"> -->
+		<input type="date" ng-model="practiceData.date" ng-change="getDailyChartData(chosenClinic._id, practiceData.date)" placeholder="Date"> Date <br>
+
+		<input type="number" ng-model="practiceData.ARcurrent" ng-value="chartData.data.ARcurrent" placeholder="ARcurrent" > ARcurrent <br>
+		<input type="number" ng-model="practiceData.ARthirtySixty" ng-value="chartData.data.ARthirtySixty" placeholder="ARthirtySixty"> ARthirtySixty <br>
+		<input type="number" ng-model="practiceData.ARsixtyNinety" ng-value="chartData.data.ARsixtyNinety" placeholder="ARsixtyNinety"> ARsixtyNinety <br>
+		<input type="number" ng-model="practiceData.ARninetyUp" ng-value="chartData.data.ARninetyUp" placeholder="ARninetyUp"> ARninetyUp <br>
+
+		<input type="number" ng-model="practiceData.insuranceARcurrent" ng-value="chartData.data.insuranceARcurrent" placeholder="insuranceARcurrent"> insuranceARcurrent <br>
+		<input type="number" ng-model="practiceData.insuranceARthirtySixty" ng-value="chartData.data.insuranceARthirtySixty" placeholder="insuranceARthirtySixty"> insuranceARthirtySixty <br>
+		<input type="number" ng-model="practiceData.insuranceARsixtyNinety" ng-value="chartData.data.insuranceARsixtyNinety" placeholder="insuranceARsixtyNinety"> insuranceARsixtyNinety <br>
+		<input type="number" ng-model="practiceData.insuranceARninetyUp" ng-value="chartData.data.insuranceARninetyUp" placeholder="insuranceARninetyUp"> insuranceARninetyUp <br>
+
+		<input type="number" ng-model="practiceData.patientARCurrent" ng-value="chartData.data.patientARCurrent" placeholder="patientARCurrent"> patientARCurrent <br>
+		<input type="number" ng-model="practiceData.patientARThirtySixty" ng-value="chartData.data.patientARThirtySixty" placeholder="patientARThirtySixty"> patientARThirtySixty <br>
+		<input type="number" ng-model="practiceData.patientARSixtyNinety" ng-value="chartData.data.patientARSixtyNinety" placeholder="patientARSixtyNinety"> patientARSixtyNinety <br>
+		<input type="number" ng-model="practiceData.patientARNinetyUp" ng-value="chartData.data.patientARNinetyUp" placeholder="patientARNinetyUp"> patientARNinetyUp <br>
+
+		<input type="number" ng-model="practiceData.patientTotalPatients" ng-value="chartData.data.patientTotalPatients" placeholder="patientTotalPatients"> patientTotalPatients <br>
+		<input type="number" ng-model="practiceData.patientNewPatients" ng-value="chartData.data.patientNewPatients" placeholder="patientNewPatients"> patientNewPatients <br>
+
+		<input type="number" ng-model="practiceData.totalBilled" ng-value="chartData.data.totalBilled" placeholder="totalBilled"> totalBilled <br>
+		<input type="number" ng-model="practiceData.billedPerPatient" ng-value="chartData.data.billedPerPatient" placeholder="billedPerPatient"> billedPerPatient <br>
+	<!-- <input ng-model="dailyChart.data[0]._id"></input> -->
+
+		<button ng-hide="practiceData._id" ng-click="submitPracticeData(practiceData, chosenClinic._id)" name="button">Submit</button>
+		<button ng-show="practiceData._id" ng-click="updatePracticeData(practiceData, chosenClinic._id)" name="button">Update</button>
+	</span>
+	<!-- <ul ng-click="unhidden(practice); getAllChartData(chosenClinic._id, currentMDY, weekStartDate, monthStartDate, monthEndDate)" ng-repeat="practice in practices"> -->
+	<ul ng-click="unhidden(practice); getDailyChartData(chosenClinic._id, currentMDY)" ng-repeat="practice in practices">
+	<!-- <ul ng-click="unhidden(practice); getWeeklyChartData(chosenClinic._id, weekStartDate, currentMDY)" ng-repeat="practice in practices"> -->
+		<li>Practice Name: {{practice.name}}</li>
+		<button ng-click="deletePractice(practice._id)">Delete Practice</button>
+	</ul>
+</div>
+<hr>
+
+<!-- CHART CONTAINER -->
+<div class="">
+
+	<!-- DAILY / WEEKLY / MONTHLY - CHART TYPES -->
+	<button ng-click="getDailyChartData(chosenClinic._id, currentMDY)">Daily</button>
+	<button ng-click="getWeeklyChartData(chosenClinic._id, weekStartDate, currentMDY)">Weekly</button>
+	<button ng-click="getMonthlyChartData(chosenClinic._id, monthStartDate, monthEndDate)">Monthly</button>
+	<br>
+	<!-- DEFINE TIME RANGES -->
+	<button class="button-daily-date" ng-click="showHideDailyDate()">Daily Date</button>
+	<button class="button-weekly-range" ng-click="showHideWeeklyRange(); setWeeklyRangeDefault()">Weekly Range</button>
+	<button class="button-monthly-range" ng-click="showHideMonthlyRange()">Monthly Range</button>
+	<br>
+    <div ng-show="dailyDateIsVisible">
+		<input type="date" ng-model="currentMDY" ng-change="getDailyChartData(chosenClinic._id, currentMDY)">
+	</div>
+	<div ng-show="weeklyRangeIsVisible">
+		<input type="date" ng-model="weekStartDate" ng-change="getWeeklyChartData(chosenClinic._id, weekStartDate, currentMDY)">
+		<input type="date" ng-model="currentMDY" ng-change="getWeeklyChartData(chosenClinic._id, weekStartDate, currentMDY)">
+	</div>
+	<div ng-show="monthlyRangeIsVisible">
+		<input type="date" ng-value="elevenMonthsPrevMY" ng-model="startMonthDate" ng-change="getMonthChartData(chosenClinic._id, monthStartDate, monthEndDate)">
+		<input type="date" ng-value="currentMY" ng-model="endMonthDate" ng-change="getMonthChartData(chosenClinic._id, monthStartDate, monthEndDate)">
+	</div>
+	<br>
+
+	<!-- TOTAL A/R CHART --> <!-- arLineStackedChart -->
+	<!-- <total-ar-chart chart-data="chartData" ng-if="chartData.data"></total-ar-chart> -->
+	<!-- <total-ar-chart chart-data="arChartData" ng-if="arChartData"></total-ar-chart> -->
+
+	<!-- TOTAL A/R VS GOAL CHART --> <!-- arGoalBarChart -->
+	<!-- <ar-goal-chart chart-data="chartData" ng-if="chartData.data"></ar-goal-chart> -->
+	<!-- <ar-goal-chart chart-data="arChartData" ng-if="arChartData"></ar-goal-chart> -->
+	
+	<!-- PATIENTS SEEN CHART --> <!-- patientSplineChart -->
+	<!-- <patients-chart chart-data="chartData" ng-if="chartData.data"></patients-chart> -->
+	<patients-chart chart-data="patientsChartData" ng-if="patientsChartData"></patients-chart>
+	
+	<!-- AMOUNT BILLED OUT CHART --> <!-- risingBarChart -->
+	<!-- <amt-billed-chart chart-data="chartData" ng-if="chartData.data"></amt-billed-chart> -->
+	<!-- <amt-billed-chart chart-data="billedChartData" ng-if="billedChartData"></amt-billed-chart> -->
+
+</div>
+
+<toaster-container></toaster-container>

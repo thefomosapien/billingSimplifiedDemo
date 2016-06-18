@@ -1,0 +1,52 @@
+<div>
+   <label>Bill ID
+      <input ng-model="search._id">
+   </label>
+    <label>Bill Date
+        <input ng-model="search.firstDateCreated">
+    </label>
+    <label>Total Amount
+        <input ng-model="search.billAmount">
+    </label>
+    <label>Patient ID
+        <input ng-model="search.patientId._id">
+    </label>
+    <label>Last Name
+        <input ng-model="search.patientId.lastName">
+    </label>
+    <label>First Name
+        <input ng-model="search.patientId.firstName">
+    </label>
+    <label>Middle Name
+        <input ng-model="search.patientId.middleName">
+    </label>
+    <label>Email Address
+        <input ng-model="search.patientId.email">
+    </label>
+    <br>
+    <table>
+        <tr style="text-align: left;">
+            <th style="width: 10%;">Bill ID</th>
+            <th style="width: 10%;">Date</th>
+            <th style="width: 10%;">Total Amount</th>
+            <th style="width: 10%;">Patient ID</th>
+            <th style="width: 10%;">Last Name</th>
+            <th style="width: 10%;">First Name</th>
+            <th style="width: 10%;">Middle Name</th>
+            <th style="width: 10%;">Email Address</th>
+        </tr>
+        <tr ng-repeat="bill in bills | filter:search:strict">
+            <td><a ng-click="selectBill(bill)">{{bill._id}}</a></td>
+            <td>{{bill.firstDateCreated | date}}</td>
+            <td>{{bill.billAmount | currency}}</td>
+            <td><a ng-click="selectPatient(bill)">{{bill.patientId._id}}</a></td>
+            <!-- <td>{{bill.patientId._id}}</td> -->
+            <td>{{bill.patientId.lastName}}</td>
+            <td>{{bill.patientId.firstName}}</td>
+            <td>{{bill.patientId.middleName}}</td>
+            <td>{{bill.patientId.email}}</td>
+        </tr>
+    </table>
+    Selected Bill : {{selectedBill}}<br>
+    Selected Patient : {{selectedPatient.patientId.firstName}}
+</div>

@@ -1,0 +1,114 @@
+html {
+  box-sizing: border-box;
+  background: #C1BDBA;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+/*login*/
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #C1BDBA;
+}
+
+#login-logo {
+  width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.form {
+  background: rgba(19, 35, 47, 0.9);
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  margin-top: 20px;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
+.login {
+  width: 100%;
+}
+
+#login-name {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#login-name,
+textarea {
+  font-size: 22px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  background: none;
+  border: 1px solid #a0b3b0;
+  outline: none;
+  color: #ffffff;
+  border-radius: 0;
+  -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+#login-name:focus {
+    border: 1px solid black;
+}
+
+#login-password {
+  margin-top: -15px;
+}
+
+#login-password,
+textarea {
+  font-size: 22px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  background: none;
+  border: 1px solid #a0b3b0;
+  outline: none;
+  color: #ffffff;
+  border-radius: 0;
+  -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+#login-password:focus {
+    border: 1px solid black;
+}
+
+.login-help {
+  float: right;
+  margin-bottom: 10px;
+}
+
+#login-submit {
+  width: 100%;
+  background-color: #179B77;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  color: white;
+  border: 0;
+  padding: 15px 0;
+}
+
+#login-submit:hover {
+  cursor: pointer;
+}
+

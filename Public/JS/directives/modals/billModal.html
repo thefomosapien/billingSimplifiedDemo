@@ -1,0 +1,209 @@
+<div class="modal" ng-show="billModalShown">
+
+    <div class="login-overlay" ng-click="toggleBillModal()"></div>
+
+    <div class="bill-container">
+
+        <div class="bill-header">
+            <div class="bill-patient-header">
+                <h1>{{ patientInfo.firstName }} {{ patientInfo.lastName }}</h1>
+            </div>
+
+            <div class="days-past-due">
+                <h1>Days Past Due: {{ daysPastDue }}</h1>
+            </div>
+        </div>
+
+        <div class="upper-bill-containers">
+            <div class="left-bill-info-container">
+                <div class="bill-address">
+                    <div class="bill-address-header">
+                        <h3><u>Billing Address:</u></h3>
+                    </div>
+                    <div class="bill-address-content">
+                        <h4>{{ patientInfo.address.street }} {{ patientInfo.address.city }} {{ patientInfo.address.state }} {{ patientInfo.address.zip }}</h4>
+                    </div>
+                </div>
+
+                <div class="bill-notes">
+                    <div class="bill-notes-header">
+                        <h3><u>Billing Notes:</u></h3>
+                    </div>
+                    <div class="bill-notes-content">
+                        <h4>{{ billInfo.notes }}</h4>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="right-bill-info-container">
+
+                <div class="bill-description-container">
+                    <div class="bill-description">
+                        <h3 style="margin: 0;padding-left: 5px;padding-right: 5px;">Bill ID:</h3>
+                    </div>
+
+                    <div class="bill-description">
+                        <h3 style="margin: 0;padding-left: 5px;padding-right: 5px;">Date Charged:</h3>
+                    </div>
+
+                    <div class="bill-description">
+                        <h3 style="margin: 0;padding-left: 5px;padding-right: 5px;">Date Due:</h3>
+                    </div>
+
+                    <div class="bill-description">
+                        <h3 style="margin: 0;padding-left: 5px;padding-right: 5px;">Total Due:</h3>
+                    </div>
+
+                    <div class="bill-description">
+                        <h3 style="margin: 0;padding-left: 5px;padding-right: 5px;">Balance Due:</h3>
+                    </div>
+                </div>
+
+
+                <div class="bill-vitals-container">
+                    <div class="bill-vitals">
+                        <h4 style="margin:0;padding-left: 5px;padding-right: 5px;">{{ billInfo._id }}</h4>
+                    </div>
+
+                    <div class="bill-vitals">
+                        <h4 style="margin:0;padding-left: 5px;padding-right: 5px;">{{ billInfo.firstDateCreated | date }}</h4>
+                    </div>
+
+                    <div class="bill-vitals">
+                        <h4 style="margin:0;padding-left: 5px;padding-right: 5px;">{{ billInfo.dateDue | date }}</h4>
+                    </div>
+
+                    <div class="bill-vitals">
+                        <h4 style="margin:0;padding-left: 5px;padding-right: 5px;">{{ billInfo.billAmount | currency }}</h4>
+                    </div>
+
+                    <div class="bill-vitals">
+                        <h4 style="margin:2px;">{{ balanceDue | currency }}</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="payment-table-container">
+
+            <div class="bill-table-header-container">
+                <div class="bill-table-header">
+                    DATE
+                </div>
+                <div class="bill-table-header">
+                    PURPOSE
+                </div>
+                <div class="bill-table-header">
+                    PAID BY
+                </div>
+                <div class="bill-table-header">
+                    PAYMENT METHOD
+                </div>
+                <div class="bill-table-header">
+                    COMMENTS
+                </div>
+                <div class="bill-table-header">
+                    PAYMENT AMOUNT
+                </div>
+            </div>
+
+            <div class="payment-container">
+
+                <div class="payments-container">
+                    <div class="payments" ng-if="billInfo.payments.length >= 1" ng-repeat="payment in billInfo.payments">
+                        <div class="payment-data">{{ payment.dateCreated | date}}</div>
+                        <div class="payment-data"> {{ payment.purpose }}</div>
+                        <div class="payment-data"> {{ payment.paidBy }}</div>
+                        <div class="payment-data"> {{ payment.paymentMethod }}</div>
+                        <div class="payment-data"> {{ payment.comments }}</div>
+                        <div class="payment-data"> {{ payment.paymentAmount | currency}}</div>
+                    </div>
+                </div>
+
+                <div class="payment-input-container">
+
+                    <input class="payment-date-created" type="date" ng-model="payment.dateCreated" placeholder="Date of Payment">
+
+                    <select class="payment-purpose" ng-model="payment.purpose" ng-required="required">
+                                <option selected disabled>Select</option>
+                                <option value="Copay">Copay</option>
+                                <option value="Deposit">Deposit</option>
+                                <option value="Bill Payment">Bill Payment</option>
+                                <option value="Other">Other</option>
+                            </select>
+
+                    <select class="payment-paid-by" ng-model="payment.paidBy" ng-required="required">
+                                <option selected disabled>Select</option>
+                                <option value="Patient">Patient</option>
+                                <option value="Insurance">Insurance</option>
+                                <option value="Third Party">Third Party</option>
+                                <option value="Other">Other</option>
+                            </select>
+
+                    <select class="payment-method" ng-model="payment.paymentMethod" ng-required="required">
+                                <option selected disabled>Select</option>
+                                <option value="Credit/Debit Card">Credit/Debit Card</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Check">Check</option>
+                                <option value="Other">Other</option>
+                            </select>
+
+                    <input class="payment-comments" type="text" ng-model="payment.comments">
+
+                    <input class="payment-amount" type="text" ng-model="payment.paymentAmount">
+
+                </div>
+                <div class="payment-submit-container">
+                    <a href class="payment-submit-button" ng-click="makePayment(payment, billInfo._id)">Submit New Payment</a>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="right-bill-info-container">
+
+            <div class="bill-description-container">
+
+                <div class="bill-description">
+                    <h3 style="margin: 0;padding-left: 5px;padding-right: 5px;">Total Due:</h3>
+                </div>
+
+                <div class="bill-description">
+                    <h3 style="margin: 0;padding-left: 5px;padding-right: 5px;">Total Paid:</h3>
+                </div>
+
+                <div class="bill-description">
+                    <h3 style="margin: 0;padding-left: 5px;padding-right: 5px;">Balance Due:</h3>
+                </div>
+            </div>
+
+
+            <div class="bill-vitals-container">
+
+                <div class="bill-vitals">
+                    <h4 style="margin:2px;">{{ billInfo.billAmount | currency }}</h4>
+                </div>
+
+                <div class="bill-vitals">
+                    <h4 style="margin:2px;">{{ calcTotalPaid(billInfo.payments) | currency }}</h4>
+                </div>
+
+                <div class="bill-vitals">
+                    <h4 style="margin:2px;">{{ balanceDue | currency }}</h4>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+</div>

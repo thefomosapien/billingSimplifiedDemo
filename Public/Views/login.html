@@ -1,0 +1,27 @@
+<body>
+
+    <img id="login-logo" src="Assets/images/billingsimplified logo llama.png">
+
+    <main class="form">
+        <section>
+
+            <h1 style="color:white; text-align:center; font-size:50px;">Welcome Back!</h1>
+
+            <form class="login" method="post" action="index.html">
+
+                <p><input id="login-name" type="text" name="login" value="" placeholder="Username or Email" ng-model="user.email"></p>
+
+                <p><input id="login-password" type="password" name="password" value="" placeholder="Password" ng-model="user.password"></p>
+
+            </form>
+
+            <div class="login-help">
+                <p style="color:#1ab188">Forgot your password?</p>
+            </div>
+
+            <button type="button" name="button" id="login-submit" ng-click="login(user)">LOGIN</button>
+
+        </section>
+    </main>
+    
+</body>

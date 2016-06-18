@@ -1,0 +1,54 @@
+<h1>Practice Admin</h1>
+
+<!-- STAFF MEMBER{{staffMember}}
+<br><br><br>
+CURRENT PRACTICE{{currentPractice}} -->
+<h2>Logged in as: {{staffMember.firstName}} {{staffMember.lastName}} at {{currentPractice.name}}</h2>
+<br><br><br>
+
+<label>{{currentPractice.name}}'s Patients</label>
+<!-- <ul ng-click="showAddBill(patient.firstName, patient.lastName, patient._id)" ng-repeat="patient in currentPractice.patients"> -->
+<ul ng-click="showAddBill(patient._id)" ng-repeat="patient in currentPractice.patients">
+    <li>{{patient.firstName}} {{patient.lastName}}</li>
+</ul>
+
+<div ng-hide="addBill" class="">
+    <ul>
+        <li>{{patientInfo.firstName}} {{patientInfo.lastName}}</li>
+        <li>{{patientInfo.email}}</li>
+        <li>{{patientInfo.phoneNumber}}</li>
+        <li>{{patientInfo.mailingAddress}}</li>
+    </ul>
+    <ul ng-repeat="bill in patientInfo.bills">
+        <li ng-click="showAddPayment(bill._id)"><h1>Bill</h1>{{bill}}</li>
+    </ul>
+    <div ng-hide="addPayment" class="">
+        <label> Payments</label>
+        <input type="text" ng-model="billId" placeholder="EnterTextHere"><br>
+        <input type="text" ng-model="payment.remainingBal"placeholder="remaining balance"><br>
+        <input type="text" ng-model="payment.totalPaid"placeholder="total paid"><br>
+        <input type="text" ng-model="payment.purpose"placeholder="Purpose of Payment"><br>
+        <input type="text" ng-model="payment.paymentMethod"placeholder="Payment Method"><br>
+        <textarea type="text" ng-model="payment.comments"placeholder="comments"></textarea><br>
+        <button ng-click="makePayment(payment, billId)"></button>
+    </div>
+    <br><br><br><hr.
+    <form>
+        <input type="text" ng-model="bill.billAmount" placeholder="Bill Amount"><br>
+        <input type="text" ng-model="patientInfo._id" placeholder="Patient Name"><br>
+        <input type="text" ng-model="bill.billingAddress" placeholder="Billing Address"><br>
+        <button ng-click="submitBill(bill, patientInfo._id)"> Submit Bill</button>
+    </form>
+</div>
+<!-- {{currentPractice.patients.firstName}} {{currentPractice.patients.lastName}} -->
+<br><br><br>
+<form class="" action="index.html" method="post">
+    <label for="">Create New Patient</label><br>
+    <input type="text"ng-model="currentPracticeId"><br>
+    <input type="text" ng-model="newPatient.firstName" placeholder="first name"><br>
+    <input type="text" ng-model="newPatient.lastName" placeholder="last name"><br>
+    <input type="text" ng-model="newPatient.insurance" placeholder="insurance"><br><br>
+    <input type="text" ng-model="newPatient.email" placeholder="email"><br>
+    <input type="text" ng-model="newPatient.dob" placeholder="dob"><br>
+    <button ng-click="addPatient(newPatient, currentPracticeId)" type="button" name="button">Creat New Patient</button>
+</form>

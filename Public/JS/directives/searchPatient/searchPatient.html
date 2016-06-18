@@ -1,0 +1,50 @@
+<div>
+    <label>Patient ID
+        <input ng-model="search._id">
+    </label>
+    <label>Last Name
+      <input ng-model="search.lastName">
+   </label>
+    <label>First Name
+        <input ng-model="search.firstName">
+    </label>
+    <label>Middle Name
+        <input ng-model="search.middleName">
+    </label>
+    <label>DOB
+        <input ng-model="search.dateOfBirth">
+    </label>
+    <label>L4 SSN
+        <input ng-model="search.lastFourSocial">
+    </label>
+    <label>Phone Number
+        <input ng-model="search.phoneNumber">
+    </label>
+    <label>Email Address
+        <input ng-model="search.email">
+    </label>
+    <br>
+    <table>
+        <tr style="text-align: left;">
+            <th style="width: 10%;">Patient ID</th>
+            <th style="width: 10%;">Last Name</th>
+            <th style="width: 10%;">First Name</th>
+            <th style="width: 10%;">Middle Name</th>
+            <th style="width: 10%;">DOB</th>
+            <th style="width: 10%;">L4 SSN</th>
+            <th style="width: 10%;">Phone Number</th>
+            <th style="width: 10%;">Email Address</th>
+        </tr>
+        <tr ng-repeat="Patient in Patients | filter:search:strict">
+            <td><a ng-click="selectPatient(Patient)">{{Patient._id}}</a></td>
+            <td>{{Patient.lastName}}</td>
+            <td>{{Patient.firstName}}</td>
+            <td>{{Patient.middleName}}</td>
+            <td>{{Patient.dateOfBirth}}</td>
+            <td>{{Patient.lastFourSocial}}</td>
+            <td>{{Patient.phoneNumber}}</td>
+            <td>{{Patient.email}}</td>
+        </tr>
+    </table>
+    Selected Patient : {{selectedPatient}}<br>
+</div>

@@ -1,0 +1,36 @@
+{
+  "name": "billingsimplified",
+  "version": "1.0.0",
+  "description": "Billing made simple\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[b",
+  "main": "index.js",
+  "dependencies": {
+    "angular-csv-import": "0.0.27",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-sass": "^2.3.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.6",
+    "mongoose": "^4.4.19",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billingSimplifiedGroupProject/billingsimplified.git"
+  },
+  "author": "Corey, Mark, Kyle, Alex, Phillip",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/billingSimplifiedGroupProject/billingsimplified/issues"
+  },
+  "homepage": "https://github.com/billingSimplifiedGroupProject/billingsimplified#readme"
+}

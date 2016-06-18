@@ -1,0 +1,103 @@
+<div class="module-container">
+
+    <div class="nav-container">
+
+        <div class="practice-staff-header">
+            <img src="Assets/images/Billingsimplified logo.png">
+        </div>
+
+        <div>
+            <h1 class="practice-name">{{currentPractice.name}}</h1>
+        </div>
+
+    </div>
+
+    <div class="search-container">
+
+        <div class="search-title">
+            <h1 style="margin:2px;"><u>VERIFY YOUR PATIENT:</u></h1>
+            <input id="patient-filter" type="search" placeholder="Patient Name" ng-model="search.firstName">
+        </div>
+
+        <div class="search-title">
+            <h1 style="margin:2px;"><u>Date of Birth</u></h1>
+            <input id="dob-filter" type="date" ng-model="search.dateOfBirth">
+        </div>
+
+        <div class="search-title">
+            <h1 style="margin:2px;"><u>Social</u></h1>
+            <input id="ssn-filter" type="text" placeholder="Last 4 of SSN" maxlength="4" ng-model="search.lastFourSocial">
+        </div>
+
+    </div>
+
+    <input id="create-patient" type="submit" value="Create New Patient" ng-click="toggleModal()">
+
+    <div class="patient-header-container">
+        <div class="patient-headers">
+            <ul class="patient-list-headers">
+                <li>Name</li>
+                <li>DOB</li>
+                <li>SSN</li>
+                <li>Phone</li>
+                <li>Email</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="patient-list">
+        <div class="patient-table" ng-repeat="patient in currentPractice.patients | filter : search | orderBy:'firstName'">
+            <a ui-sref="patientProfile({id:patient._id})">
+                <ul class="patient-list-items">
+                    <li>{{ patient.firstName }} {{ patient.lastName }}</li>
+                    <li>{{ patient.dateOfBirth | date }}</li>
+                    <li>{{ patient.lastFourSocial }}</li>
+                    <li>{{ patient.phoneNumber }}</li>
+                    <li>{{ patient.email }}</li>
+                </ul>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<new-patient-modal-dir></new-patient-modal-dir>
+
+
+
+
+
+<!--
+<ul ng-click="showAddBill(patient._id)" ng-repeat="patient in currentPractice.patients">
+    <li>{{patient.firstName}} {{patient.lastName}}</li>
+</ul>
+
+<div ng-hide="addBill" class="">
+    <ul>
+        <li>{{patientInfo.firstName}} {{patientInfo.lastName}}</li>
+        <li>{{patientInfo.email}}</li>
+        <li>{{patientInfo.phoneNumber}}</li>
+        <li>{{patientInfo.mailingAddress}}</li>
+    </ul>
+    <ul ng-repeat="bill in patientInfo.bills">
+        <li ng-click="showAddPayment(bill._id)">
+            <h1>Bill</h1>{{bill}}</li>
+    </ul>
+    <div ng-hide="addPayment" class="">
+        <label> Payments</label>
+        <input type="text" ng-model="billId" placeholder="EnterTextHere"><br>
+        <input type="text" ng-model="payment.remainingBal" placeholder="remaining balance"><br>
+        <input type="text" ng-model="payment.totalPaid" placeholder="total paid"><br>
+        <input type="text" ng-model="payment.purpose" placeholder="Purpose of Payment"><br>
+        <input type="text" ng-model="payment.paymentMethod" placeholder="Payment Method"><br>
+        <textarea type="text" ng-model="payment.comments" placeholder="comments"></textarea><br>
+        <button ng-click="makePayment(payment, billId)"></button>
+    </div>
+    <br><br><br>
+    <hr. <form>
+        <input type="text" ng-model="bill.billAmount" placeholder="Bill Amount"><br>
+        <input type="text" ng-model="patientInfo._id" placeholder="Patient Name"><br>
+        <input type="text" ng-model="bill.billingAddress" placeholder="Billing Address"><br>
+        <button ng-click="submitBill(bill, patientInfo._id)"> Submit Bill</button>
+        </form>
+</div>-->

@@ -1,0 +1,80 @@
+<div class="modal" ng-show="modalShown">
+
+    <div class="login-overlay" ng-click="toggleModal()"></div>
+
+    <div class="new-bill-form">
+
+        <input class="hidden" type="text" ng-model="currentPracticeId">
+
+        <div class="new-bill-title" ng-hide="hideSubmitBill">
+            <h1><u>Create New Bill</u></h1>
+        </div>
+
+        <div>
+            <div class="bill-input-container">
+                <div ng-hide="hideSubmitBill">
+                    <input class="hidden" type="text" ng-model="patientInfo._id" placeholder="Patient Name">
+
+                    <input class="bill-input" type="number" ng-model="bill.billAmount" placeholder="Bill Amount">
+
+                    <input class="bill-input" type="date" ng-model="bill.firstDateCreated" placeholder="Date Charged">
+
+                    <input class="bill-input" type="date" ng-model="bill.dateDue" placeholder="Date Due">
+
+                    <input class="bill-input" type="text" value="{{ patientInfo.address.street }} {{ patientInfo.address.city }} {{ patientInfo.address.state }} {{ patientInfo.address.zip }}" ng-model="bill.billingAddress">
+
+                    <input class="bill-input" type="text" ng-model="bill.notes" placeholder="Bill Notes">
+                </div>
+
+                <button class="quick-payment-button" ng-click="showAddPayment()" ng-hide="hideQuickPayment" ng-show="addPayment">Quick Payment</button>
+
+                <div ng-hide="addPayment">
+
+                    <div class="new-bill-title">
+                        <h1><u>Submit Payment For Recently Submitted Bill</u></h1>
+                    </div>
+
+                    <input class="hidden" type="text" ng-model="billId">
+
+                    <input class="bill-input" type="date" ng-model="payment.dateCreated" placeholder="Date of Payment">
+
+                    <input class="bill-input" type="text" ng-model="payment.paymentAmount" placeholder="Payment Amount">
+
+                    <input class="bill-input" type="text" ng-model="payment.remainingBal" placeholder="Remaining Balance">
+
+                    <input class="bill-input" type="text" ng-model="payment.paidBy" placeholder="Payment Made By">
+
+                    <input class="bill-input" type="text" ng-model="payment.purpose" placeholder="Purpose of Payment">
+
+                    <input class="bill-input" type="text" ng-model="payment.paymentMethod" placeholder="Payment Method">
+
+                    <input class="bill-input" type="text" ng-model="payment.comments" placeholder="Comments">
+
+                    <button class="submit-quick-payment" ng-click="makePayment(payment, billId)">Submit Quick Payment</button>
+
+                    <button class="exit-quick-payment">Exit</button>
+
+                </div>
+
+                <button class="new-bill-submit" ng-click="submitBill(bill, patientInfo._id)" type="button" name="button" ng-hide="hideSubmitBill">Submit New Bill</button>
+
+            </div>
+
+        </div>
+
+
+        <div ng-hide="addBill" class="">
+            <ul>
+                <li>{{patientInfo.firstName}} {{patientInfo.lastName}}</li>
+                <li>{{patientInfo.email}}</li>
+                <li>{{patientInfo.phoneNumber}}</li>
+                <li>{{patientInfo.mailingAddress}}</li>
+            </ul>
+            <ul ng-repeat="bill in patientInfo.bills">
+                <li ng-click="showAddPayment(bill._id)">
+                    <h1>Bill</h1>{{bill}}</li>
+            </ul>
+
+        </div>
+    </div>
+</div>

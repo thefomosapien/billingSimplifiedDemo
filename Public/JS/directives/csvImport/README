@@ -1,0 +1,30 @@
+https://github.com/bahaaldine/angular-csv-import
+
+Install depedencies:
+
+npm install angular-csv-import
+Add js libraries to your application:
+
+    ...
+    <script src=".......angular-csv-import/dist/angular-csv-import.js"></script>
+    ...
+    ***this file copied and moved to public folder***
+Add ngCSVImport module to you application
+
+    ...
+    angular
+      .module('myAwesomeApp', [
+        ...
+        'ngCsvImport',
+        ...
+      ])
+    ...
+Usage
+
+Include the ng-csv-import element with its options:
+
+<ng-csv-import content="csv.content"
+    header="csv.header"
+    separator="csv.separator"
+    result="csv.result"
+    accept="csv.accept"></ng-csv-import>
